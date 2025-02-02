@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+__pycache__/
+*.so
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+__pycache__/
+**/migrations/
+local_settings.py
+
+# Static and media files (if not managed by Django)
+static/
+media/
+
+# Testing
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE files
+.idea/
+.vscode/
+
+# Database (if using SQLite, otherwise configure appropriately)
+*.sqlite3
+db.sqlite3
