@@ -81,6 +81,7 @@ SITE_ID=3
 SITE_URL = 'http://127.0.0.1:8000'
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -90,8 +91,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'allauth.account.middleware.AccountMiddleware',  # allauth middleware
-
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'blog_backend.urls'
@@ -229,12 +228,14 @@ EMAIL_HOST_USER = 'melodygeorge6547@gmail.com'
 EMAIL_HOST_PASSWORD = 'neqc ngdw rcem ibve'
 
 # Allowing requests from cros origin , like mobile app -> will check better solution letter
-# CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOWED_ORIGINS = [] // will implement this later with devs IPs
+
+CORS_ALLOW_ALL_ORIGINS = True  # Allows all domains (for development)
+
+# OR, allow specific domains:
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8081",  # Development server
-    "http://localhost:8000",  # Development server
+    "http://localhost:5173",  # React frontend
 ]
+
 
 AUTHENTICATION_BACKENDS = [
     'apps.user.authentication.EmailBackend',
