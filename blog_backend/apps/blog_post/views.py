@@ -26,7 +26,7 @@ class BlogPostDetailView(APIView):
     permission_classes = [IsAuthenticated, IsOwner]
 
     def get(self, request, post_id, format=None):
-        blog_post = get_object_or_404(BlogPost, id=post_id)
+        blog_post = get_object_or_404(BlogPost, post_id=post_id)
         self.check_object_permissions(request, blog_post)
         serializer = BlogPostSerializer(blog_post)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -43,13 +43,26 @@ class BlogPostUpdateView(APIView):
         responses={200: BlogPostSerializer}
     )
     def put(self, request, post_id, format=None):
-        blog_post = get_object_or_404(BlogPost, id=post_id)
+        blog_post = get_object_or_404(BlogPost, post_id=post_id)
         self.check_object_permissions(request, blog_post)
         serializer = BlogPostSerializer(blog_post, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class BlogPostDeleteView(APIView):
+    """
+    Delete a blog post instance.
+    """
+    permission_classes = [IsAuthenticated, IsOwner]
+
+    def delete(self, request, post_id, format=None):
+        blog_post = get_object_or_404(BlogPost, post_id=post_id)
+        self.check_object_permissions(request, blog_post)
+        blog_post.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class BlogPostCreateView(APIView):
@@ -68,16 +81,3 @@ class BlogPostCreateView(APIView):
             serializer.save(user_id=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class BlogPostDeleteView(APIView):
-    """
-    Delete a blog post instance.
-    """
-    permission_classes = [IsAuthenticated, IsOwner]
-
-    def delete(self, request, post_id, format=None):
-        blog_post = get_object_or_404(BlogPost, id=post_id)
-        self.check_object_permissions(request, blog_post)
-        blog_post.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)

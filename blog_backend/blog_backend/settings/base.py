@@ -14,6 +14,10 @@ from pathlib import Path
 from datetime import timedelta
 import os
 
+import ssl
+
+ssl._create_default_https_context = ssl._create_unverified_context
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -74,7 +78,7 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID=3
-
+SITE_URL = 'http://127.0.0.1:8000'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -92,7 +96,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'blog_backend.urls'
 
-
+print(os.path.join(BASE_DIR_PARENT, 'email_templates'))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -222,7 +226,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'melodygeorge6547@gmail.com'
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_PASSWORD = 'neqc ngdw rcem ibve'
 
 # Allowing requests from cros origin , like mobile app -> will check better solution letter
 # CORS_ALLOW_ALL_ORIGINS = True

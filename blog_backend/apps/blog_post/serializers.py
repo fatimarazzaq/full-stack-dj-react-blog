@@ -9,8 +9,8 @@ class BlogPostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = BlogPost
-        fields = ['id', 'user_id', 'title', 'content', 'created_at', 'updated_at']
-        read_only_fields = ['id', 'created_at', 'updated_at']  # Making id and timestamps read-only
+        fields = ['post_id', 'user_id', 'title', 'content', 'created_at', 'updated_at']
+        read_only_fields = ['post_id', 'created_at', 'updated_at']  # Making id and timestamps read-only
 
     def create(self, validated_data):
         # Creating a new BlogPost instance

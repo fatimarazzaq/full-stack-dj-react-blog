@@ -1,0 +1,21 @@
+{% autoescape off %}
+Hi {{ user }},
+
+<div>Thank you for registering with us!</div>
+
+<div>Please click the link below to activate your account:</div>
+
+<div>
+{% if protocol == 'https' %}
+https://{{ verification_url }}
+{% else %}
+http://{{ verification_url }}
+{% endif %}
+</div>
+If you did not register for an account, you can ignore this email.
+
+
+Thanks,
+<br>
+The Maldeva Team
+{% endautoescape %}
