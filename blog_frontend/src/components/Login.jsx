@@ -25,10 +25,9 @@ const Login = () => {
       });
 
       if (response.status === 200) {
-        const access_token = response.data.access;
-        const refresh_token = response.data.refresh;
-        localStorage.setItem('access_token', access_token);
-        localStorage.setItem('refresh_token', refresh_token);
+        const { access, refresh } = response.data;
+        localStorage.setItem('access_token', access);
+        localStorage.setItem('refresh_token', refresh);
         login();
         navigate('/');
       }

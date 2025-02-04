@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../utils/axiosInstance';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -10,11 +10,9 @@ const Signup = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  // Handle the form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate form fields
     if (!username || !email || !password || !confirmPassword) {
       setError('All fields are required');
       return;
@@ -26,15 +24,13 @@ const Signup = () => {
     }
 
     try {
-      // Send POST request to create the user
-      const response = await axios.post('http://127.0.0.1:8000/api/auth/register/', {
+      const response = await axiosInstance.post('auth/register/', {
         username,
         email,
         password,
         password2: confirmPassword,
       });
 
-      // If successful, navigate to the login page
       if (response.status === 201) {
         navigate('/login');
       }
@@ -48,14 +44,11 @@ const Signup = () => {
     <div className="container my-5">
       <h2>Sign Up</h2>
       {error && <div className="alert alert-danger">{error}</div>}
-
       <div className="card shadow-lg">
         <div className="card-body">
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="username" className="form-label">
-                Username
-              </label>
+              <label htmlFor="username" className="form-label">Username</label>
               <input
                 type="text"
                 className="form-control"
@@ -65,11 +58,8 @@ const Signup = () => {
                 required
               />
             </div>
-
             <div className="mb-3">
-              <label htmlFor="email" className="form-label">
-                Email
-              </label>
+              <label htmlFor="email" className="form-label">Email</label>
               <input
                 type="email"
                 className="form-control"
@@ -79,11 +69,8 @@ const Signup = () => {
                 required
               />
             </div>
-
             <div className="mb-3">
-              <label htmlFor="password" className="form-label">
-                Password
-              </label>
+              <label htmlFor="password" className="form-label">Password</label>
               <input
                 type="password"
                 className="form-control"
@@ -93,11 +80,8 @@ const Signup = () => {
                 required
               />
             </div>
-
             <div className="mb-3">
-              <label htmlFor="confirmPassword" className="form-label">
-                Confirm Password
-              </label>
+              <label htmlFor="confirmPassword" className="form-label">Confirm Password</label>
               <input
                 type="password"
                 className="form-control"
@@ -107,10 +91,7 @@ const Signup = () => {
                 required
               />
             </div>
-
-            <button type="submit" className="btn btn-primary">
-              Sign Up
-            </button>
+            <button type="submit" className="btn btn-primary">Sign Up</button>
           </form>
         </div>
       </div>
