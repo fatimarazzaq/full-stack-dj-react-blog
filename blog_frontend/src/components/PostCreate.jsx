@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../utils/axiosInstance';
 
 const PostCreate = () => {
   const [title, setTitle] = useState('');
@@ -23,14 +24,10 @@ const PostCreate = () => {
       const user_id =  "mTZB3NwS39vGUxprLGW87j"
       
       // Send POST request to create the post
-      const response = await axios.post('http://127.0.0.1:8000/api/posts/create/', {
+      const response = await axiosInstance.post('posts/create/', {
         user_id,
         title,
         content,
-      },{
-        headers: {
-          Authorization: `Bearer ${token}`, // Pass JWT token in headers
-        },
       });
 
       // If successful, navigate to the post list
