@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setPosts } from '../features/post/postSlice';
 import axiosInstance from '../utils/axiosInstance';
+import { AuthContext } from '../context/AuthContext';
 
 const AllPosts = () => {
     const [data, setData] = useState([]);
@@ -10,6 +11,7 @@ const AllPosts = () => {
     const [error, setError] = useState(null);
 
     const dispatch = useDispatch();
+    const { isAuthenticated } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,15 +27,29 @@ const AllPosts = () => {
             }
         };
 
-        fetchData();
-    }, [dispatch]);
+        if (isAuthenticated) {
+            fetchData();
+        } else {
+            setLoading(false);
+        }
+    }, [dispatch, isAuthenticated]);
 
     return (
         <div className="container">
             <div className="d-flex justify-between flex-wrap">
                 {loading && <p>Loading...</p>}
                 {error && <p>{error}</p>}
-                {data.map((obj, key) => (
+                {!isAuthenticated && (
+                    <div className='my-5' style={{ border: '1px solid #ccc', padding: '20px', textAlign: 'center', width: '100%' }}>
+                        <h2>No posts to show</h2>
+                    </div>
+                )}
+                {isAuthenticated && data.length === 0 && (
+                    <div className='my-5' style={{ border: '1px solid #ccc', padding: '20px', textAlign: 'center', width: '100%' }}>
+                        <h2>No posts available</h2>
+                    </div>
+                )}
+                {isAuthenticated && data.map((obj, key) => (
                     <div key={key} className="card m-3 my-4" style={{ width: '18rem' }}>
                         <div className="card-body">
                             <h5 className="card-title">{obj.title}</h5>

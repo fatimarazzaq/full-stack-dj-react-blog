@@ -15,6 +15,11 @@ local_settings.py
 static/
 media/
 
+
+# Environments
+.env
+dev.env
+
 # Testing
 .coverage
 .tox/

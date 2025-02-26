@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
-
+import environ
 import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -23,13 +23,19 @@ ssl._create_default_https_context = ssl._create_unverified_context
 BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR_PARENT = BASE_DIR.parent
 
+
+env_path = os.path.join(BASE_DIR_PARENT, 'dev.env')
+env = environ.Env()
+environ.Env.read_env(env.str('ENV_PATH', env_path))
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
-SECRET_KEY = 'django-insecure-jz%67=7%8-z!+vluf1_2rm-zi6w3(2d=_cag%lsth!=mu)0ycj'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool("DEBUG", default=True)
 
 ALLOWED_HOSTS = []
 
@@ -222,11 +228,10 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 # Email configuration for Gmail SMTP
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'melodygeorge6547@gmail.com'
-EMAIL_HOST_PASSWORD = 'neqc ngdw rcem ibve'
-
+EMAIL_PORT = env('EMAIL_PORT')
+EMAIL_USE_TLS = env('EMAIL_USE_TLS')
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 # Allowing requests from cros origin , like mobile app -> will check better solution letter
 
 CORS_ALLOW_ALL_ORIGINS = True  # Allows all domains (for development)
