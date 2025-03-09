@@ -1,11 +1,12 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
-import { AuthContext } from '../context/AuthContext';
+import { logout } from '../features/auth/authSlice';
 
 const Logout = () => {
   const navigate = useNavigate();
-  const { logout } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const performLogout = async () => {
@@ -16,9 +17,7 @@ const Logout = () => {
             refresh: refresh_token,
           });
         }
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('refresh_token');
-        logout();
+        dispatch(logout());
         navigate('/login');
       } catch (error) {
         console.error('Error logging out:', error);
@@ -26,7 +25,7 @@ const Logout = () => {
     };
 
     performLogout();
-  }, [navigate, logout]);
+  }, [dispatch, navigate]);
 
   return (
     <div>Logging out...</div>

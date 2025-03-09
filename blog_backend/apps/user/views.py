@@ -112,6 +112,7 @@ class UserRegisterView(APIView):
     )
     def post(self,request,format=None):
         serializer = UserRegisterSerializer(data=request.data)
+        print(request.data)
         if serializer.is_valid(raise_exception=True):
             user = serializer.save()
             user_data = UserRegisterSerializer(user).data
@@ -212,6 +213,7 @@ class CustomLoginView(APIView):
                 if user is not None:
                     refresh = RefreshToken.for_user(user)
                     return Response({
+                        'user-id': user.id,
                         'refresh': str(refresh),
                         'access': str(refresh.access_token),
                     }, status=status.HTTP_200_OK)

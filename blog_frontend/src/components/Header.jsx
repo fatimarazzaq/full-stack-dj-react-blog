@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
-  const { isAuthenticated } = useContext(AuthContext);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">

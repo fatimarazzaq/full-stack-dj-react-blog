@@ -7,11 +7,9 @@ import PostDetail from './components/PostDetail';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Logout from './components/Logout';
-import { AuthProvider } from './context/AuthContext';
 
 const App = () => {
   return (
-    <AuthProvider>
       <Router>
         <Header />
         <Routes>
@@ -23,7 +21,6 @@ const App = () => {
           <Route path="/logout" element={<Logout />} />
         </Routes>
       </Router>
-    </AuthProvider>
   );
 };
 

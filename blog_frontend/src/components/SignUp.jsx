@@ -23,6 +23,14 @@ const Signup = () => {
       return;
     }
 
+    console.log({
+      username,
+      email,
+      password,
+      password2: confirmPassword,
+    });
+    
+
     try {
       const response = await axiosInstance.post('auth/register/', {
         username,

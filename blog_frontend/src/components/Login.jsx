@@ -1,14 +1,15 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
-import { AuthContext } from '../context/AuthContext';
+import { login } from "../features/auth/authSlice";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,10 +26,10 @@ const Login = () => {
       });
 
       if (response.status === 200) {
-        const { access, refresh } = response.data;
+        const { access, refresh, 'user-id': userId } = response.data;
         localStorage.setItem('access_token', access);
         localStorage.setItem('refresh_token', refresh);
-        login();
+        dispatch(login({ userId }));
         navigate('/');
       }
     } catch (err) {

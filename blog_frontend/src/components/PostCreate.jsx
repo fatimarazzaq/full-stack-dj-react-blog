@@ -2,12 +2,18 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const PostCreate = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const userId = useSelector((state) => state.auth.userId);
+
+  console.log('userId',userId);
+
 
   // Handle the form submission
   const handleSubmit = async (e) => {
@@ -20,11 +26,11 @@ const PostCreate = () => {
     }
 
     try {
-      const user_id =  "mTZB3NwS39vGUxprLGW87j"
-      
+        console.log('userId',userId);
+              
       // Send POST request to create the post
       const response = await axiosInstance.post('posts/create/', {
-        user_id,
+        user_id: userId,
         title,
         content,
       });

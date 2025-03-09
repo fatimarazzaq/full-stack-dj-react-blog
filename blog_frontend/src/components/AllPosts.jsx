@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setPosts } from '../features/post/postSlice';
 import axiosInstance from '../utils/axiosInstance';
-import { AuthContext } from '../context/AuthContext';
 import './AllPosts.css'; // Import the CSS file
+import { useSelector } from 'react-redux';
 
 const AllPosts = () => {
     const [data, setData] = useState([]);
@@ -12,7 +12,7 @@ const AllPosts = () => {
     const [error, setError] = useState(null);
 
     const dispatch = useDispatch();
-    const { isAuthenticated } = useContext(AuthContext);
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
     useEffect(() => {
         const fetchData = async () => {
