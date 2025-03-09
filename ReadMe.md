@@ -4,10 +4,10 @@ This is a full stack web application built with Django for the backend and React
 
 
 Screenshot 1
-<img src="screenshots/screenshot-2.jpeg" alt="Todo Screen" width="300"/>
+<img src="screenshots/screenshot-1.png" alt="Screen-Shot-1" width="300"/>
 
 Screenshot 2
-<img src="screenshots/screenshot-1.jpeg" alt="Todo Screen" width="300"/> 
+<img src="screenshots/screenshot-2.png" alt="Screen-Shot-2" width="300"/> 
 
 
 ## Requirements
