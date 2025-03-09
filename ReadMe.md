@@ -3,12 +3,13 @@
 This is a full stack web application built with Django for the backend and React for the frontend. The application includes user authentication, CRUD operations for blog posts, and JWT-based authentication.
 
 
-Screenshot 1
-<img src="screenshots/screenshot-1.png" alt="Screen-Shot-1" width="300"/>
+![Home](screenshots/home.png)
 
-Screenshot 2
-<img src="screenshots/screenshot-2.png" alt="Screen-Shot-2" width="300"/> 
+![Signup](screenshots/signup.png)
 
+![Login](screenshots/login.png)
+
+![Create Post](screenshots/create-post.png)
 
 ## Requirements
 

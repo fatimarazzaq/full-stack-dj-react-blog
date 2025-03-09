@@ -41,12 +41,12 @@ const AllPosts = () => {
                 {loading && <p>Loading...</p>}
                 {error && <p>{error}</p>}
                 {!isAuthenticated && (
-                    <div className="centered-message">
+                    <div className="text-center border my-5 py-5 rounded" style={{width:"100%"}}>
                         <h2>No posts to show</h2>
                     </div>
                 )}
                 {isAuthenticated && data.length === 0 && (
-                    <div className="centered-message">
+                    <div className="text-center border my-5 py-5 rounded" style={{width:"100%"}}>
                         <h2>No posts available</h2>
                     </div>
                 )}
