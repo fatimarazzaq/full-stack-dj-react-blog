@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { setPosts } from '../features/post/postSlice';
 import axiosInstance from '../utils/axiosInstance';
 import { AuthContext } from '../context/AuthContext';
+import './AllPosts.css'; // Import the CSS file
 
 const AllPosts = () => {
     const [data, setData] = useState([]);
@@ -40,12 +41,12 @@ const AllPosts = () => {
                 {loading && <p>Loading...</p>}
                 {error && <p>{error}</p>}
                 {!isAuthenticated && (
-                    <div className='my-5' style={{ border: '1px solid #ccc', padding: '20px', textAlign: 'center', width: '100%' }}>
+                    <div className="centered-message">
                         <h2>No posts to show</h2>
                     </div>
                 )}
                 {isAuthenticated && data.length === 0 && (
-                    <div className='my-5' style={{ border: '1px solid #ccc', padding: '20px', textAlign: 'center', width: '100%' }}>
+                    <div className="centered-message">
                         <h2>No posts available</h2>
                     </div>
                 )}
