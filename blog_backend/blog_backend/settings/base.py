@@ -14,9 +14,11 @@ from pathlib import Path
 from datetime import timedelta
 import os
 import environ
+import certifi
 import ssl
 
-ssl._create_default_https_context = ssl._create_unverified_context
+ssl_context = ssl.create_default_context(cafile=certifi.where())
+print(ssl_context)
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

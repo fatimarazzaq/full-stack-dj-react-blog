@@ -2,11 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import axiosInstance from '../utils/axiosInstance';
+import { useSelector } from 'react-redux';
 
 const PostDetail = () => {
   const { postId } = useParams(); // Get postId from the URL
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
+  const isAuthenticated = useSelector((state)=>state.auth.isAuthenticated);
+
+
+  useEffect(()=>{
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
+  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     const fetchPostDetail = async () => {

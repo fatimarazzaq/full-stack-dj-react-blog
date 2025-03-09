@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../utils/axiosInstance';
@@ -11,8 +11,15 @@ const PostCreate = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
   const userId = useSelector((state) => state.auth.userId);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   console.log('userId',userId);
+
+  useEffect(()=>{
+    if(!isAuthenticated){
+      navigate('/login')
+    }
+  },[isAuthenticated,navigate])
 
 
   // Handle the form submission
