@@ -10,7 +10,6 @@ const PostDetail = () => {
 
   useEffect(() => {
     const fetchPostDetail = async () => {
-     
       try {
         const response = await axiosInstance.get(`posts/detail/${postId}/`);
         setPost(response.data);

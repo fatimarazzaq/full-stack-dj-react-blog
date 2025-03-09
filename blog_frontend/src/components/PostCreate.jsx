@@ -20,7 +20,6 @@ const PostCreate = () => {
     }
 
     try {
-      const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM5MTk4MDE5LCJpYXQiOjE3Mzg1OTMyMTksImp0aSI6IjU0YzIzNDJiOWZmYTQ5MDk5NGEyMzdkZTI3NGM1NGI1IiwidXNlcl9pZCI6Im1UWkIzTndTMzl2R1V4cHJMR1c4N2oifQ.UedFg6ik8bYbNhQVwI4CSlWn2m7raw3N76WyVm5bxlo"; // Replace with actual JWT token
       const user_id =  "mTZB3NwS39vGUxprLGW87j"
       
       // Send POST request to create the post
