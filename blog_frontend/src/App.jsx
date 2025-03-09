@@ -7,6 +7,8 @@ import PostDetail from './components/PostDetail';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Logout from './components/Logout';
+import EmailVerification from './components/EmailVerification';
+
 
 const App = () => {
   return (
@@ -19,6 +21,7 @@ const App = () => {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
+          <Route path="/verify-email" element={<EmailVerification />} />
         </Routes>
       </Router>
   );

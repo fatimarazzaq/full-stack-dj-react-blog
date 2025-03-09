@@ -87,6 +87,8 @@ INSTALLED_APPS = [
 
 SITE_ID=3
 SITE_URL = 'http://127.0.0.1:8000'
+FRONTEND_URL = 'http://localhost:5173'
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -234,7 +236,17 @@ EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_USE_TLS = env('EMAIL_USE_TLS')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+SECURE_SSL_REDIRECT = False  # Prevents redirecting HTTP to HTTPS
+SESSION_COOKIE_SECURE = False  # Prevents secure cookies (HTTPS-only)
+CSRF_COOKIE_SECURE = False  # Prevents secure CSRF cookies
+SECURE_HSTS_SECONDS = 0  # Disables HSTS (Strict Transport Security)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_HSTS_PRELOAD = False
+
+
 # Allowing requests from cros origin , like mobile app -> will check better solution letter
+
 
 CORS_ALLOW_ALL_ORIGINS = True  # Allows all domains (for development)
 

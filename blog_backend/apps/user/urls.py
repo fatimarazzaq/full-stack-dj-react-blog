@@ -22,7 +22,7 @@ urlpatterns = [
     path('email/verify/', UserVerifyCheckView.as_view(), name='check_email_verify'),
     path('token/refresh/', CustomTokenRefreshView.as_view(), name='token_refresh'),
 
-    path('activate/<uidb64>/<token>/', account_activate, name='activate'),
+    path('account-activate/<uidb64>/<token>/', account_activate, name='activate'),
 
     # social auth urls
     path('facebook/', FacebookLogin.as_view(), name='fb_login'),

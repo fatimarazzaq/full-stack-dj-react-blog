@@ -40,7 +40,7 @@ const Signup = () => {
       });
 
       if (response.status === 201) {
-        navigate('/login');
+        navigate('/verify-email');
       }
     } catch (err) {
       setError('Error signing up. Please try again later.');
