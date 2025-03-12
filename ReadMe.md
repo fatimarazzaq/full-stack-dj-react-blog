@@ -2,7 +2,7 @@
 
 This is a full stack web application built with Django for the backend and React for the frontend. The application includes user authentication, CRUD operations for blog posts, and JWT-based authentication.
 
-```
+<!--
 ![Home](screenshots/home.png)
 
 ![Signup](screenshots/signup.png)
@@ -10,7 +10,8 @@ This is a full stack web application built with Django for the backend and React
 ![Login](screenshots/login.png)
 
 ![Create Post](screenshots/create-post.png)
-```
+-->
+
 ## Requirements
 
 - Python 3.7+
