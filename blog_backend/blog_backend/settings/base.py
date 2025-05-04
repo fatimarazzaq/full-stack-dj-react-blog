@@ -202,8 +202,8 @@ SIMPLE_JWT = {
 
 
 SPECTACULAR_SETTINGS = {
-    'TITLE': 'Maldeva API Project',
-    'DESCRIPTION': 'Hotels, Activity, Restaurant reservation system',
+    'TITLE': 'Full-Stack Django Blog Project',
+    'DESCRIPTION': 'Read, Write, Update, Delete Blog Posts',
     'VERSION': '1.0.0',
     'AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
