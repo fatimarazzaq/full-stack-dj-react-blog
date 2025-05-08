@@ -120,9 +120,9 @@ class UserRegisterView(APIView):
             user = serializer.save()
             user_data = UserRegisterSerializer(user).data
             print(user_data)
-            # user.is_active = True
-            # user.save()
-            activateEmail(request, user, user_data['email'])
+            user.is_active = True
+            user.save()
+            #activateEmail(request, user, user_data['email'])
 
             return Response({'message':'Registered Successfully! Please confirm your email to activate your account.'},status=status.HTTP_201_CREATED)
 
