@@ -29,7 +29,7 @@ const Signup = () => {
       password,
       password2: confirmPassword,
     });
-    
+
 
     try {
       const response = await axiosInstance.post('auth/register/', {
@@ -40,7 +40,7 @@ const Signup = () => {
       });
 
       if (response.status === 201) {
-        navigate('/verify-email');
+        navigate('/login');
       }
     } catch (err) {
       setError('Error signing up. Please try again later.');
